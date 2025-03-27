@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit the user</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/save}" th:object="${user}">
+    <input type="hidden" th:field="*{id}" th:value="${user.getId()}">
+
+    <label for="username">Username</label>
+    <input type="text" th:field="*{username}" id="username"/>
+
+    <label for="password">Password</label>
+    <input type="password" th:field="*{password}" id="password"/>
+
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name"/>
+
+    <label for="lastname">Lastname</label>
+    <input type="text" th:field="*{lastname}" id="lastname"/>
+
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age"/>
+
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email">
+
+    <label>
+        <select th:name="roles" th:value="*{roles}">
+            <option th:each="role:${roles}" th:value="${role.id}" th:text="${role.name}" selected/>
+        </select>
+    </label>
+    <input type="submit" value="Save user">
+</form>
+<br>
+<a href="/admin">
+    <input type="submit" value="Back">
+</a>
+<br>
+<a href="/logout">
+    <input type="submit" value="Logout">
+</a>
+</body>
+</html>
